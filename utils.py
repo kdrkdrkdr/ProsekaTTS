@@ -1,4 +1,3 @@
-from pprint import pprint
 from pySmartDL import SmartDL
 from time import sleep
 from selenium.webdriver.common.by import By
@@ -7,9 +6,21 @@ name = 'hoshino_ichika'
 character = '一歌'
 char_code = 'chr_ts_1.'
 
+
 class GetDataURL:
     def __init__(self, driver) -> None:
         self.driver = driver
+
+    
+    def get_all_data(self):
+        lst = []
+        lst.extend(self.character_stories())
+        lst.extend(self.card_stories())
+        lst.extend(self.area_talk())
+        lst.extend(self.unit_story())
+        lst.extend(self.event_story())
+        lst.extend(self.special_story())
+        return lst
         
 
     def character_stories(self):
@@ -96,20 +107,18 @@ class GetDataURL:
             c = self.driver.find_elements(By.XPATH, '//*[@id="root"]/div/div[3]/div[2]/div')
             url_lst.extend([i.find_element(By.TAG_NAME, 'a').get_attribute('href') for i in c])
         return url_lst
-        
-        
+
+
+
 
 
 class GetProsekaDataset:
     def __init__(self, driver) -> None:
-        name = 'tenma_saki'
-        character = '咲希'
         self.metadata = open(f'metadata_{name}.txt', 'w', encoding='utf-8')
         self.driver = driver
 
 
-    def get_data(self):
-        talk_urls = self.get_talk_urls()
+    def get_data(self, talk_urls):
         for tu in talk_urls:
             self.driver.get(tu)
             sleep(10)
@@ -119,6 +128,7 @@ class GetProsekaDataset:
                     transcript = i.find_element(By.TAG_NAME, 'p').text.strip()
                     mp3Link = i.find_element(By.TAG_NAME, 'a').get_attribute('href')
                     fname = mp3Link.split('/')[-1]
+                    print(f'{}\n{}\n\n')
                     self.download_mp3(mp3Link)
                     self.metadata.writelines(f'{fname}|{transcript}\n')
 
@@ -136,7 +146,7 @@ class GetProsekaDataset:
     def download_mp3(self, mp3Url):
         while True:
             try:
-                obj = SmartDL(mp3Url, 'wavs\\')
+                obj = SmartDL(mp3Url, f'wavs\\{name}\\')
                 obj.start()
                 path = obj.get_dest()
                 break

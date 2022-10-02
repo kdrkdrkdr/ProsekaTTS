@@ -22,4 +22,8 @@ path = chromedriver_autoinstaller.install()
 driver = Chrome()
 
 g = GetDataURL(driver)
-pprint(g.special_story())
+sp = g.character_stories()
+pprint(sp)
+
+p = GetProsekaDataset(driver)
+p.get_data(sp)
