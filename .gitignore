@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 
-wavs/
+tts_dataset/
 metadata*
