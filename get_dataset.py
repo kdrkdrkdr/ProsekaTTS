@@ -1,5 +1,6 @@
 import os
 from pprint import pprint
+import json
 from pySmartDL import SmartDL
 from time import sleep
 from selenium.common import exceptions
@@ -14,8 +15,6 @@ from pySmartDL import SmartDL
 
 
 
-
-
 class GetDataURL:
     def __init__(self, driver) -> None:
         self.driver = driver
@@ -23,10 +22,10 @@ class GetDataURL:
     
     def get_all_data(self):
         lst = []
-        # lst.extend(self.character_stories())
-        # lst.extend(self.card_stories())
-        # lst.extend(self.area_talk())
-        # lst.extend(self.unit_story())
+        lst.extend(self.character_stories())
+        lst.extend(self.card_stories())
+        lst.extend(self.area_talk())
+        lst.extend(self.unit_story())
         # lst.extend(self.special_story())
         # lst.extend(self.event_story())
         return lst
@@ -117,7 +116,7 @@ class GetDataURL:
         container = self.driver.find_elements(By.XPATH, '//*[@id="root"]/div/div[3]/div[2]/div')
         for j in [i.find_element(By.TAG_NAME, 'a').get_attribute('href') for i in container]:
             self.driver.get(j)
-            sleep(10)
+            sleep(5)
             try:
                 c = self.driver.find_elements(By.XPATH, '//*[@id="root"]/div/div[3]/div[2]/div')
                 url_lst.extend([i.find_element(By.TAG_NAME, 'a').get_attribute('href') for i in c])
@@ -150,7 +149,7 @@ class GetProsekaDataset:
                     try:
                         transcript = i.find_element(By.TAG_NAME, 'p').text.strip()
                         mp3Link = i.find_element(By.TAG_NAME, 'a').get_attribute('href')
-                        fname = mp3Link.split('/')[-1]
+                        fname = mp3Link.split('/')[-1].replace('.mp3', '.wav')
                         print(f'{transcript}\n{mp3Link}')
                         self.download_mp3(mp3Link)
                         print('\n')
@@ -186,17 +185,23 @@ class GetProsekaDataset:
 
 
 if __name__ == '__main__':
-    name = 'hoshino_ichika' # tenma_saki
-    character = '一歌' # 咲希
-    char_code = 'chr_ts_1.' # chr_ts_2.
+    import sys
+    char_json = json.loads(
+        open('character_code.json', 'r', encoding='utf-8').read()
+    )['code'] [int(sys.argv[1])] # Speaker ID
+
+    name = char_json['name']
+    character = char_json['character'] 
+    char_code = char_json['char_code']
+
+    print(name, character, char_code)
 
     options = Options()
     path = chromedriver_autoinstaller.install()
     driver = Chrome()
 
-
     g = GetDataURL(driver)
-    data = g.event_story()
+    data = g.get_all_data()
 
     p = GetProsekaDataset(driver)
     p.get_data(data)

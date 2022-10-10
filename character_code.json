@@ -1,0 +1,138 @@
+{
+    "code" : [
+        {
+            "name":"hoshino_ichika",
+            "character":"一歌",
+            "char_code":"chr_ts_1.",
+            "speaker_id": 0
+        },
+        {
+            "name":"tenma_saki",
+            "character":"咲希",
+            "char_code":"chr_ts_2.",
+            "speaker_id": 1
+            
+        },
+        {
+            "name":"mochizuki_honami",
+            "character":"穂波",
+            "char_code":"chr_ts_3.",
+            "speaker_id": 2
+            
+        },
+        {
+            "name":"hinomori_shiho",
+            "character":"志歩",
+            "char_code":"chr_ts_4.",
+            "speaker_id": 3
+        },
+
+
+
+        {
+            "name":"hanasato_minori",
+            "character":"みのり",
+            "char_code":"chr_ts_5.",
+            "speaker_id": 4
+        },
+        {
+            "name":"kiritani_haruka",
+            "character":"遥",
+            "char_code":"chr_ts_6.",
+            "speaker_id": 5
+        },
+        {
+            "name":"momoi_airi",
+            "character":"愛莉",
+            "char_code":"chr_ts_7.",
+            "speaker_id": 6
+        },
+        {
+            "name":"hinomori_shizuku",
+            "character":"雫",
+            "char_code":"chr_ts_8.",
+            "speaker_id": 7
+        },
+        
+
+
+        {
+            "name":"azusawa_kohane",
+            "character":"こはね",
+            "char_code":"chr_ts_9.",
+            "speaker_id": 8
+        },
+        {
+            "name":"shiraishi_an",
+            "character":"杏",
+            "char_code":"chr_ts_10.",
+            "speaker_id": 9
+        },
+        {
+            "name":"shinonome_akito",
+            "character":"彰人",
+            "char_code":"chr_ts_11.",
+            "speaker_id": 10
+        },
+        {
+            "name":"aoyagi_toya",
+            "character":"冬弥",
+            "char_code":"chr_ts_12.",
+            "speaker_id": 11
+        },
+
+
+
+        {
+            "name":"tenma_tsukasa",
+            "character":"司",
+            "char_code":"chr_ts_13.",
+            "speaker_id": 12
+        },
+        {
+            "name":"ootori_emu",
+            "character":"えむ",
+            "char_code":"chr_ts_14.",
+            "speaker_id": 13
+        },
+        {
+            "name":"kusanagi_nene",
+            "character":"寧々",
+            "char_code":"chr_ts_15.",
+            "speaker_id": 14
+        },
+        {
+            "name":"kamishiro_rui",
+            "character":"類",
+            "char_code":"chr_ts_16.",
+            "speaker_id": 15
+        },
+
+
+
+        {
+            "name":"yoasaki_kanade",
+            "character":"奏",
+            "char_code":"chr_ts_17.",
+            "speaker_id": 16
+        },
+        {
+            "name":"asahina_mafuyu",
+            "character":"まふゆ",
+            "char_code":"chr_ts_18.",
+            "speaker_id": 17
+        },
+        {
+            "name":"shinonome_ena",
+            "character":"絵名",
+            "char_code":"chr_ts_19.",
+            "speaker_id": 18
+        },
+        {
+            "name":"akiyama_mizuki",
+            "character":"瑞希",
+            "char_code":"chr_ts_20.",
+            "speaker_id": 19
+        }
+    ]
+}
